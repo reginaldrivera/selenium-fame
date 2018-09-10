@@ -20,7 +20,6 @@ public class fpg1001 {
 		// Things to verify in the PDP page for FPG1001
 		String dressNameExpected = "Dresses with Waistband";
 		String dressPriceExpected = "$199";
-		
 		WebElement dressName = driver.findElement(By.xpath("//h1[@class='jsx-2020247591 dress-title']"));
 		WebElement dressPrice = driver.findElement(By.xpath("//em[@class='jsx-2020247591']"));
 		
@@ -46,18 +45,11 @@ public class fpg1001 {
 			System.out.println("FAILED \n");
 		}
 		
-		// Verify the following elements exists	
-		String addToBagLabel = "ADD TO BAG";
-		String shareYourDesignLabel = "Share your design";
-		String orderFabricSwatchesLabel = "Order Fabric Swatches";
-		String orderFabricSwatchesLink = "https://www.fameandpartners.com/custom-clothes/order-swatches";
 		
+		// Verify Add to Bag button	
+		String addToBagLabel = "ADD TO BAG";
 		WebElement addToBag = driver.findElement(By.xpath("//button[@class='jsx-960340962 button Button Button--fullwidth add-to-cart-button']"));
-		WebElement shareYourDesign = driver.findElement(By.xpath("//a[@class='jsx-2020247591 no-underline icon-text']"));
-		WebElement orderFabricSwatches = driver.findElement(By.xpath("//a[@class='no-underline icon-text']"));
-		String orderFabricSwatchesURL = driver.findElement(By.linkText("Order Fabric Swatches")).getAttribute("href");
-		WebElement shippingDelivery = driver.findElement(By.xpath("//p[@class='jsx-2020247591']"));
-
+		
 		System.out.println("Verify Add to Bag button");
 		System.out.println("Expected label:  " + addToBagLabel);
 		System.out.println("Actual label:  " + addToBag.getText());
@@ -67,6 +59,10 @@ public class fpg1001 {
 		else{
 			System.out.println("FAILED \n");
 		}
+		
+		// Verify Share your design Link
+		String shareYourDesignLabel = "Share your design";
+		WebElement shareYourDesign = driver.findElement(By.xpath("//a[@class='jsx-2020247591 no-underline icon-text']"));
 		
 		System.out.println("Verify Share your design Link");
 		System.out.println("Expected label:  " + shareYourDesignLabel);
@@ -78,6 +74,12 @@ public class fpg1001 {
 			System.out.println("FAILED \n");
 		}
 		
+		// Verify Order Fabric Swatches Link
+		String orderFabricSwatchesLabel = "Order Fabric Swatches";
+		String orderFabricSwatchesLink = "https://www.fameandpartners.com/custom-clothes/order-swatches";
+		WebElement orderFabricSwatches = driver.findElement(By.xpath("//a[@class='no-underline icon-text']"));
+		String orderFabricSwatchesURL = driver.findElement(By.linkText("Order Fabric Swatches")).getAttribute("href");
+		
 		System.out.println("Verify Order Fabric Swatches Link");
 		System.out.println("Expected label:  " + orderFabricSwatchesLabel);
 		System.out.println("Actual label:  " + orderFabricSwatches.getText());
@@ -88,7 +90,7 @@ public class fpg1001 {
 			System.out.println("FAILED \n");
 		}	
 		System.out.println("Expected URL:  " + orderFabricSwatchesLink);
-		System.out.println("Actual label:  " + orderFabricSwatchesURL);
+		System.out.println("Actual URL:  " + orderFabricSwatchesURL);
 		if (orderFabricSwatchesLink.contentEquals(orderFabricSwatchesURL)){
 			System.out.println("PASSED \n");
 		}
@@ -96,10 +98,22 @@ public class fpg1001 {
 			System.out.println("FAILED \n");
 		}
 		
+		// Verify Delivery and Shipping copy
+		String deliveryText = "Estimated Delivery 6-10 weeks. ";
+		String shippingText = "Shipping is free on your customized item. Learn more";
+		String deliveryShippingText = deliveryText + shippingText;
+		WebElement deliveryShipping = driver.findElement(By.xpath("//p[@class='jsx-2020247591']"));
 		
-		if (shippingDelivery.isDisplayed()){
-			System.out.println("Delivery and Shipping copy: Exists");
+		System.out.println("Verify Delivery and Shipping copy");
+		System.out.println("Expected text:  " + deliveryShippingText);
+		System.out.println("Actual text:  " + deliveryShipping.getText());
+		if (deliveryShippingText.contentEquals(deliveryShipping.getText())){
+			System.out.println("PASSED \n");
 		}
+		else{
+			System.out.println("FAILED \n");
+		}
+		
 		
 		driver.close();
 		
