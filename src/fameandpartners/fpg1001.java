@@ -49,11 +49,13 @@ public class fpg1001 {
 		// Verify the following elements exists	
 		String addToBagLabel = "ADD TO BAG";
 		String shareYourDesignLabel = "Share your design";
-	
+		String orderFabricSwatchesLabel = "Order Fabric Swatches";
+		String orderFabricSwatchesLink = "https://www.fameandpartners.com/custom-clothes/order-swatches";
 		
 		WebElement addToBag = driver.findElement(By.xpath("//button[@class='jsx-960340962 button Button Button--fullwidth add-to-cart-button']"));
 		WebElement shareYourDesign = driver.findElement(By.xpath("//a[@class='jsx-2020247591 no-underline icon-text']"));
 		WebElement orderFabricSwatches = driver.findElement(By.xpath("//a[@class='no-underline icon-text']"));
+		String orderFabricSwatchesURL = driver.findElement(By.linkText("Order Fabric Swatches")).getAttribute("href");
 		WebElement shippingDelivery = driver.findElement(By.xpath("//p[@class='jsx-2020247591']"));
 
 		System.out.println("Verify Add to Bag button");
@@ -76,9 +78,25 @@ public class fpg1001 {
 			System.out.println("FAILED \n");
 		}
 		
-		if (orderFabricSwatches.isDisplayed()){
-			System.out.println("Order Fabric Swatches link: Exists");
+		System.out.println("Verify Order Fabric Swatches Link");
+		System.out.println("Expected label:  " + orderFabricSwatchesLabel);
+		System.out.println("Actual label:  " + orderFabricSwatches.getText());
+		if (orderFabricSwatchesLabel.contentEquals(orderFabricSwatches.getText())){
+			System.out.println("PASSED \n");
 		}
+		else{
+			System.out.println("FAILED \n");
+		}	
+		System.out.println("Expected URL:  " + orderFabricSwatchesLink);
+		System.out.println("Actual label:  " + orderFabricSwatchesURL);
+		if (orderFabricSwatchesLink.contentEquals(orderFabricSwatchesURL)){
+			System.out.println("PASSED \n");
+		}
+		else{
+			System.out.println("FAILED \n");
+		}
+		
+		
 		if (shippingDelivery.isDisplayed()){
 			System.out.println("Delivery and Shipping copy: Exists");
 		}
