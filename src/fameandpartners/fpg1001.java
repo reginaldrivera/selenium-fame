@@ -46,6 +46,43 @@ public class fpg1001 {
 			System.out.println("FAILED \n");
 		}
 		
+		// Verify the following elements exists	
+		String addToBagLabel = "ADD TO BAG";
+		String shareYourDesignLabel = "Share your design";
+	
+		
+		WebElement addToBag = driver.findElement(By.xpath("//button[@class='jsx-960340962 button Button Button--fullwidth add-to-cart-button']"));
+		WebElement shareYourDesign = driver.findElement(By.xpath("//a[@class='jsx-2020247591 no-underline icon-text']"));
+		WebElement orderFabricSwatches = driver.findElement(By.xpath("//a[@class='no-underline icon-text']"));
+		WebElement shippingDelivery = driver.findElement(By.xpath("//p[@class='jsx-2020247591']"));
+
+		System.out.println("Verify Add to Bag button");
+		System.out.println("Expected label:  " + addToBagLabel);
+		System.out.println("Actual label:  " + addToBag.getText());
+		if (addToBagLabel.contentEquals(addToBag.getText())){
+			System.out.println("PASSED \n");
+		}
+		else{
+			System.out.println("FAILED \n");
+		}
+		
+		System.out.println("Verify Share your design Link");
+		System.out.println("Expected label:  " + shareYourDesignLabel);
+		System.out.println("Actual label:  " + shareYourDesign.getText());
+		if (shareYourDesignLabel.contentEquals(shareYourDesign.getText())){
+			System.out.println("PASSED \n");
+		}
+		else{
+			System.out.println("FAILED \n");
+		}
+		
+		if (orderFabricSwatches.isDisplayed()){
+			System.out.println("Order Fabric Swatches link: Exists");
+		}
+		if (shippingDelivery.isDisplayed()){
+			System.out.println("Delivery and Shipping copy: Exists");
+		}
+		
 		driver.close();
 		
 		
